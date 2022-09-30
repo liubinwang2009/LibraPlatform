@@ -1,6 +1,10 @@
 # Libra-Platform 微服务平台
 Libra-Platform微服务平台基于SpringCloud(2020.0.x) + SpringCloudAlibaba(2021.x) + SpringBoot(2.4.x) + Vue3开发，基于多租户SaaS模式的设计，拥有强大的用户中心，权限基于RBAC设计，支持蓝绿灰度发布、网关动态路由等功能。Libra-Platform平台架构清晰、代码简介、注解齐全，很适合作为基础框架使用。
 
+
+    最新代码分支：1.2.x
+    稳定分支：master 
+
 ## 仓库地址
 
 【github】
@@ -23,7 +27,7 @@ Libra-Platform微服务平台基于SpringCloud(2020.0.x) + SpringCloudAlibaba(20
 
 ## 在线体验
 
-http://www.librayun.net:8888
+http://www.librayun.net:8888 (服务器到期，暂时无法提供在线体验)
 
 **商业合作、技术问题可加微信：Jack-hfbin (添加时请备注好意图)**
 
@@ -37,7 +41,7 @@ libra-platform -- 父项目
 │  │  ├─libra-plugin-common -- 公共
 │  │  ├─libra-plugin-bgg -- 蓝绿灰度发布组件
 │  │  ├─libra-plugin-nacos -- nacos二次封装组件
-│  │  ├─libra-plugin-bgg -- sentinel二次封装组件
+│  │  ├─libra-plugin-sentinel -- sentinel二次封装组件
 │  │  ├─libra-plugin-gateway -- 网关组件
 │  │  ├─libra-plugin-service -- 非网关组件
 │  │  ├─libra-plugin-admin-service -- 暴露动态更新配置服务
@@ -68,22 +72,21 @@ libra-platform -- 父项目
 ```
 # 后端工程
 git clone https://gitee.com/huangfubin/LibraPlatform.git
-说明：启动项目需要依赖nacos、mysql（5.7+）、redis，启动前请先安装好
+说明：启动项目需要依赖nacos（2.1）、mysql（5.7+）、redis，启动前请先安装好
 
 安装好之后nacos（可以参考官网如何安装）、mysql、redis
-第一步：创建好数据库libra-base、libra-gen、libra-tr、libra-ucpm、nacos。sql文件目录下create-database.sql是创建数据脚本，可以直接执行，执行完之后执行如下脚本（sql文件下）：
+第一步：创建好数据库libra-base、libra-gen、libra-tr、libra-ucpm文件目录下create-database.sql是创建数据脚本，可以直接执行，执行完之后执行如下脚本（sql文件下）：
     libra-base.sql
     libra-gen.sql
     libra-tr.sql
     libra-ucpm.sql
-    nacos.sql（nacos配置中心文件）
-第二步：重启搭建好nacos服务，进入nocos控制台修改对应服务配置，比如数据库密码等配置
+第二步：访问搭建好nacos服务，将libra服务相关nacos配置文件导入配置中心，在nacos目录下nacos_config.zip（直接导入zip即可）
 第三步：启动服务libra-base-service、libra-tenant-service、libra-ucpm-service、libra-auth-service、libra-gateway
 
 # 前端工程
 git clone https://gitee.com/huangfubin/LibraPlatformUi.git
-npm install
 npm install --registry=https://registry.npm.taobao.org
+npm install
 npm run dev
 
 访问地址：http://localhost:9527
